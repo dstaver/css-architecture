@@ -1,0 +1,64 @@
+{
+  "name": "css-architecture",
+  "description": "Tests and documentation for my current CSS architecture approach",
+  "author": "Daniel Staver <daniel@petraflux.com>",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstaver/css-architecture.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dstaver/css-architecture/issues"
+  },
+  "homepage": "https://github.com/dstaver/css-architecture",
+  "scripts": {
+    "start": "node server.js",
+    "browsersync": "browser-sync start --config browsersync.config.js",
+    "clean": "rm -rf dist/*",
+    "dev": "run-s clean dev:*",
+    "dev:js": "NODE_ENV=development webpack --progress --mode=development -p",
+    "dev:css": "NODE_ENV=development postcss src/css/style.css --verbose -o dist/style.css",
+    "dev:static": "cpx './src/static/**' dist",
+    "build": "run-s clean build:*",
+    "build:js": "NODE_ENV=production webpack --progress --mode=production -p",
+    "build:css": "NODE_ENV=production postcss src/css/style.css --verbose -o dist/style.css",
+    "build:static": "cpx './src/static/**' dist",
+    "watch": "run-s dev && run-p start watch:*",
+    "watch:js": "NODE_ENV=development webpack --progress --watch --mode=development -p",
+    "watch:css": "NODE_ENV=development postcss src/css/style.css --watch --verbose -o dist/style.css",
+    "watch:static": "cpx './src/static/**' dist -w",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
+  },
+  "dependencies": {
+    "browser-sync": "^2.23.6",
+    "compression": "^1.7.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "cpx": "^1.5.0",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.5.0",
+    "html-webpack-plugin": "^2.30.1",
+    "npm-run-all": "^4.1.2",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-import": "^11.1.0",
+    "postcss-modules": "^1.1.0",
+    "postcss-nested": "^3.0.0",
+    "prettier": "^1.11.0-rc.1",
+    "tailwindcss": "^0.4.1",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^2.0.8"
+  }
+}

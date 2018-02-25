@@ -1,0 +1,15 @@
+.c-button {
+  @apply .bg-blue;
+  @apply .py-2 .px-4;
+  display: inline-block;
+  border-radius: 3px;
+  color: white;
+
+  &__text {
+    font-weight: bold;
+  }
+
+  &--danger {
+    background-color: red;
+  }
+}
